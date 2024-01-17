@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis and Forecasting</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:#b27bfa;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        li {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #4285f4;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #3171e0;
+        }
+
+        #displayedImage {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Analysis and Forecasting</h1>
+    <ul>
+        <li><a href="#" onclick="changeImage('global')">Global</a></li>
+        <li><a href="#" onclick="changeImage('india')">India</a></li>
+    </ul>
+    <img id="displayedImage" src="{{ url_for('static', filename='global_prediction.png') }}" alt="Displayed Image">
+    
+    <script>
+        function changeImage(region) {
+            var imagePath;
+            if (region === 'global') {
+                imagePath = '{{ url_for("static", filename="global_prediction.png") }}';
+            } else if (region === 'india') {
+                imagePath = '{{ url_for("static", filename="india_prediction.jpg") }}';
+            }
+            document.getElementById('displayedImage').src = imagePath;
+        }
+    </script>
+    <style>
+        #displayedImage {
+            width: 70%; /* Adjust this value based on your layout */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+    
+</body>
+</html>

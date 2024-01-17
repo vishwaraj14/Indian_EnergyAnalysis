@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Analysis and Prediction</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #b27bfa;
+        }
+    
+        header {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            width: 100%;
+        }
+    
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 800px;
+            margin: 2em auto;
+            background-color:rgb(102, 100, 97);
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+        }
+    
+        input {
+            width: 100%;
+            padding: 0.5em;
+            margin-bottom: 1em;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+    
+        button {
+            background-color: #333;
+            color: white;
+            padding: 0.7em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    
+        button:hover {
+            background-color: #555;
+        }
+    
+        .charts-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0em auto;
+            justify-content: space-between;
+        }
+
+        .chart {
+            width: 58%;
+            background-color: #fff;
+            padding: 1em;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        li {
+            display: inline-block;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        function goToHome() {
+            window.location.href = "{{ url_for('index') }}";
+        }
+        
+    </script>
+    <!-- Add the autocomplete script inside the head tag -->
+
+</head>
+<body>
+
+    <ul>
+     <li><button onclick="goToHome()">Home</button></li>   
+    <li>
+    <form action="{{ url_for('submit') }}" method="post">
+        <label for="state">Enter State:</label>
+        <input type="text" name="state" required>
+        
+        <label for="year">Select Year:</label>
+        <select name="year" required>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <!-- Add more years as needed --> 
+        </select>
+        
+        <button type="submit">Submit</button>
+    </form>
+</li>
+</ul>
+
+    {% if pie_chart %}
+    <div class="charts-container">
+        <div class="chart" id="pie-chart">
+            <img src="data:image/png;base64,{{ pie_chart }}" alt="Energy Composition Pie Chart">
+        </div>
+        {% if bar_chart %}
+        <div class="chart" id="bar-chart">
+            <img src="data:image/png;base64,{{ bar_chart }}" alt="Bar Chart">
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+
+</body>
+</html>

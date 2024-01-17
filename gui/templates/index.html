@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Analytics</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url('/static/background.jpg');  /* Replace 'background.jpg' with the actual path to your image */
+            background-size:cover;
+            background-position:top;
+            background-repeat: no-repeat;
+        }
+
+        h1 {
+            text-align: center;
+            color: #000000;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        li {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #4285f4;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #3171e0;
+        }
+
+        #displayedImage {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Energy Analytics</h1>
+    <ul>
+        <li><a href="{{ url_for('state_analysis') }}">State Analysis and Prediction</a></li>
+        <li><a href="{{ url_for('tableau_visualization') }}">Tableau Visualization</a></li>
+        <li><a href="{{ url_for('global_analysis') }}">Global Analysis and Prediction</a></li>
+    </ul>
+    
+</body>
+</html>
